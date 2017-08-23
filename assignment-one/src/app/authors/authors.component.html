@@ -2,3 +2,18 @@
 <ul>
   <li *ngFor="let author of authors"> {{ author }} </li>
 </ul>
+<div (click)="onDivClick()">
+    <button class="btn btn-primary"
+    [class.active]="isActive"
+    [style.backgroundColor] = "isActive ? 'blue' : 'white'"
+    (click)="onSave($event)">Save</button>
+    <input [(ngModel)]="email" (keyup.enter)="onKeyUp()" type="text"/>
+</div>
+<div>
+  {{ course.title | uppercase | lowercase }} <br/>
+  {{ course.students | number }} <br/>
+  {{ course.rating | number:'1.2-2'}} <br/>
+  {{ course.price | currency:'EUR':true:'3.2-2'}} <br/>
+  {{ course.releaseDate | date:'shortDate' }} <br/>
+  {{ course.text | summary:20}}
+</div>
