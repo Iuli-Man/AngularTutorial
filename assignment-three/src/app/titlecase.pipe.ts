@@ -5,20 +5,27 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TitleCasingPipe implements PipeTransform{
 
-    prepositions = ['with', 'and', 'of', 'the', 'to', 'in', 'from', 'for', 'over', 'before', 'between', 'after', 'on', 'by', 'about', 'like'];
-
     transform(value: string) : string{
-        let tokens = value.toLowerCase().split(' ');
-        let result = this.capitalizeFirtLeter(tokens[0]) + ' ';        
-        for(let token of tokens.slice(1)) {
-            result += this.prepositions.includes(token) ? 
-                        token + ' ': this.capitalizeFirtLeter(token) + ' ';
+        if(!value) return null;
+        
+        let tokens = value.toLowerCase().split(' ');     
+        for(let i = 0; i < tokens.length; i++) {
+            let word = tokens[i];
+            if(i > 0 && this.isPreposition(word))
+                tokens[i] = word;
+            else
+                tokens[i] = this.capitalizeFirtLeter(word);
         }
-        return result;
+        return tokens.join(' ');
     }
 
     capitalizeFirtLeter(value: string) : string {
         return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+
+    private isPreposition(word: string): boolean {
+        let prepositions = ['of', 'the', 'in', 'on'];
+        return prepositions.includes(word);
     }
 
 }
