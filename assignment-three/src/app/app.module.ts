@@ -1,14 +1,16 @@
+import { TitleCasingPipe } from './titlecase.pipe';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { FavoriteComponent } from './favorite/favorite.component';
+import { TitleCaseComponent } from './title-case/title-case.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FavoriteComponent
+    TitleCaseComponent,
+    TitleCasingPipe
   ],
   imports: [
     BrowserModule,
