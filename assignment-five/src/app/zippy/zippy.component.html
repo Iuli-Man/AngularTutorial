@@ -1,0 +1,13 @@
+<div class="panel panel-default" >
+  <div class="panel-body tab" [style.background]="_showContent ? '#ccc' : white" (click)="toggleContent()">{{ title }}
+    <i
+      class="glyphicon pull-right"
+      [ngClass]="{
+        'glyphicon-chevron-up': _showContent,
+        'glyphicon-chevron-down': !_showContent
+      }"></i>
+  </div>
+  <div class="panel-body" *ngIf="_showContent">
+    <ng-content></ng-content>
+  </div>
+</div>
