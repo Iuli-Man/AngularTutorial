@@ -1,0 +1,8 @@
+.media-object {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+}
+.media {
+    padding-top: 10px;
+}
